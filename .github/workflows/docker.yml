@@ -1,0 +1,15 @@
+name: C++ CI
+
+on: [push, pull_request]
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build env image
+      run: docker build --target=env --tag project:env -f ci/docker/ubuntu/Dockerfile . 
+    - name: Build devel image
+      run: docker build --target=devel --tag project:devel -f ci/docker/ubuntu/Dockerfile .
+    - name: Build build image
+      run: docker build --target=build --tag project:build -f ci/docker/ubuntu/Dockerfile . 
