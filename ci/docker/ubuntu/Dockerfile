@@ -26,7 +26,7 @@ RUN cmake -H. -Bbuild
 # CMake build
 RUN cmake --build build --target all
 # CMake install
-RUN cmake --build build --target install
+#RUN cmake --build build --target install
 
 # Create an install image to check cmake install config
 FROM env AS install

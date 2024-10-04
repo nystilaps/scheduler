@@ -13,3 +13,5 @@ jobs:
       run: docker build --target=devel --tag project:devel -f ci/docker/ubuntu/Dockerfile .
     - name: Build build image
       run: docker build --target=build --tag project:build -f ci/docker/ubuntu/Dockerfile . 
+    - name: Test
+      run: docker run --rm --init -t --name test project:build cmake --build build --target test
