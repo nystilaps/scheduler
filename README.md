@@ -57,8 +57,35 @@ Allowed options: :
   -o [ --output ] arg            output full schedule to a given path
 
 
+There's an example input file `test.txt` in the root of the repository.
+
 
 Build
 -----
-Test
-test
+To build one need to use CMake and C++ compiler.
+Clone repository, 
+
+create out-of-source directory,
+
+set up cmake,
+
+build and run test:
+
+
+    git clone https://github.com/nystilaps/scheduler.git
+    mkdir scheduler-build
+    cd scheduler-build
+    cmake -DCMAKE_BUILD_TYPE=Release ../scheduler
+    make -j7
+
+Run tests:
+
+    make test 
+
+Run the executable like this:
+
+    ./builder -i ../scheduler/test.txt -o '/dev/stdout' -c 10 -p
+
+Get help on using the executable:
+
+    ./builder -h
